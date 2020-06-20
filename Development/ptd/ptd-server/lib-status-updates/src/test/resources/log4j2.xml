@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
 	<Appenders>
-		<Appender name="NULL" class="org.apache.log4j.varia.NullAppender" />
-		<Console name="STDOUT" target="SYSTEM_OUT">
+		<Appender name="null" class="org.apache.log4j.varia.NullAppender" />
+		<Console name="stdout" target="SYSTEM_OUT">
 			<PatternLayout pattern="%d %-5p [%t] %c{1.} - %m%n" />
 		</Console>
 	</Appenders>
 	<Loggers>
 		<Root level="trace">
-			<AppenderRef ref="NULL" />
+			<AppenderRef ref="null" />
 		</Root>
 	</Loggers>
 </Configuration>

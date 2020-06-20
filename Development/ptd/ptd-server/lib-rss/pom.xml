@@ -13,7 +13,7 @@
     <groupId>app.ptd.server</groupId>
     <artifactId>lib-rss</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>JAXB RSS Library</name>
+    <name>Public Transport Delays - RSS Library</name>
     <url>https://github.com/mvolejnik/public-transport-delays</url>
     
     <properties>
@@ -22,6 +22,7 @@
 
     <build>
         <plugins>
+            <!--
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxb2-maven-plugin</artifactId>
@@ -31,6 +32,7 @@
                     <schemaFiles>rss-2_0.xsd</schemaFiles>
                 </configuration>
             </plugin>
+            -->
         </plugins>
     </build>
 
@@ -44,17 +46,13 @@
             <artifactId>jaxb-runtime</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.sun.activation</groupId>
-            <artifactId>jakarta.activation</artifactId>
+          <groupId>jakarta.activation</groupId>
+          <artifactId>jakarta.activation-api</artifactId>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-surefire-provider</artifactId>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>

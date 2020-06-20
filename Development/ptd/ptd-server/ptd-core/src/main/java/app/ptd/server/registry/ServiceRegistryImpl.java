@@ -9,8 +9,16 @@ package app.ptd.server.registry;
  *
  * @author mvolejnik
  */
-public class ServiceRegistryImpl {
-    
-    
+public class ServiceRegistryImpl implements ServiceRegistry{
+
+    @Override
+    public void register() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void unregister() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

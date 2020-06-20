@@ -10,9 +10,9 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import javax.json.Json;
-import javax.json.JsonException;
-import javax.json.stream.JsonParser;
+import jakarta.json.Json;
+import jakarta.json.JsonException;
+import jakarta.json.stream.JsonParser;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -10,7 +10,6 @@ import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import org.apache.commons.io.IOUtils;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -28,7 +27,7 @@ public class ResourceImplTest {
      */
     
     @Test
-    public void testContent() throws RemoteResourceException, IOException, NoSuchAlgorithmException {
+    void testContent() throws RemoteResourceException, IOException, NoSuchAlgorithmException {
         Resource r = new ResourceImpl(IOUtils.toInputStream(CONTENT, Charset.forName("UTF-8")));
         var content = r.content();
         assertNotNull(content, "Content should not be null");
@@ -36,21 +35,21 @@ public class ResourceImplTest {
     }
     
      @Test
-    public void testContentNoFingerprint() throws RemoteResourceException, IOException, NoSuchAlgorithmException {
+    void testContentNoFingerprint() throws RemoteResourceException, IOException, NoSuchAlgorithmException {
         Resource r = new ResourceImpl(IOUtils.toInputStream(CONTENT, Charset.forName("UTF-8")));
         assertNotNull(r.content(), "Content should not be null");
         assertTrue(r.fingerprint().isEmpty(), "Fingerprint should be empty");
     }
     
     @Test
-    public void testContentWithFingerprint() throws RemoteResourceException, IOException, NoSuchAlgorithmException {
+    void testContentWithFingerprint() throws RemoteResourceException, IOException, NoSuchAlgorithmException {
         Resource r = new ResourceImpl(IOUtils.toInputStream(CONTENT, Charset.forName("UTF-8")), FINGERPRINT);
         assertTrue(r.fingerprint().isPresent(), "Fingerprint should not be empty");
         assertEquals(FINGERPRINT, r.fingerprint().get(), "Fingerprints should equal");
     }
     
      @Test
-    public void testContentDigest() throws RemoteResourceException, IOException, NoSuchAlgorithmException {
+    void testContentDigest() throws RemoteResourceException, IOException, NoSuchAlgorithmException {
         Resource r = new ResourceImpl(IOUtils.toInputStream(CONTENT, Charset.forName("UTF-8")));
         assertNotNull(r.content(), "Content should not be null");
         assertTrue(r.digest().isPresent(), "Digest should not be null");

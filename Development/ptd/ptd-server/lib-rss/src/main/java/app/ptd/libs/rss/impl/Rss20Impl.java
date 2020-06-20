@@ -2,9 +2,9 @@ package app.ptd.libs.rss.impl;
 
 import java.io.InputStream;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Unmarshaller;
 
 import app.ptd.libs.rss.RssException;
 import app.ptd.libs.rss.jaxb.rss20.Rss;

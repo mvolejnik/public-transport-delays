@@ -2,8 +2,11 @@ package app.ptd.server.registry;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
+import java.net.DatagramSocket;
 import java.net.InetSocketAddress;
-import java.net.MulticastSocket;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.net.StandardSocketOptions;
 import java.net.URI;
 import java.net.URL;
 import java.nio.charset.Charset;
@@ -42,14 +45,34 @@ public class ServiceRegistryClientImpl implements ServiceRegistryClient {
     }
     
     private void sendMulticastMessage(byte[] message){
-        try (MulticastSocket socket = new MulticastSocket(inetSocketAddress.getPort());){
-            socket.joinGroup(inetSocketAddress.getAddress());
-            DatagramPacket packet = new DatagramPacket(message, message.length, inetSocketAddress.getAddress(), inetSocketAddress.getPort());
-            socket.send(packet);
+        try {
+            final var loopbackInterface = NetworkInterface.networkInterfaces()
+                .filter(ni -> isLoopback(ni))
+                .findAny()
+                .get();
+            DatagramSocket sender = new DatagramSocket(new InetSocketAddress(0));
+            sender.setOption(StandardSocketOptions.IP_MULTICAST_IF, loopbackInterface);
+            sender.setOption(StandardSocketOptions.IP_MULTICAST_TTL, 0);
+            InetSocketAddress dest = new InetSocketAddress(inetSocketAddress.getAddress(), inetSocketAddress.getPort());
+            DatagramPacket hi = new DatagramPacket(message, message.length, dest);
+            sender.send(hi);
         } catch (IOException ex) {
-            l.error("Unable to send UDP datagram!", ex);
+            l.error("Unable to obtain network interface.", ex);  
         }
     }
     
-    
+    private boolean isLoopback(NetworkInterface networkInterface){
+      try {
+          if (networkInterface.isLoopback() && networkInterface.isUp()) {
+            if (networkInterface.supportsMulticast()){
+              return true;
+            } else {
+              l.warn("Multicast not allowed for loopback interface, allow it using 'sudo ifconfig {} multicast'", networkInterface.getName());
+            }
+          }
+          return false;
+      } catch (SocketException ex) {
+          return false;
+      }
+    }
 }
