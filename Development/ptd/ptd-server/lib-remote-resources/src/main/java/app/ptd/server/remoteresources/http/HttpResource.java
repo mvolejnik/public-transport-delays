@@ -42,7 +42,7 @@ public class HttpResource implements AutoCloseable {
    * @throws RemoteResourceException if resource cannot be downloaded
    */
   public Optional<Resource> content(URL resourceUrl) throws RemoteResourceException {
-    return content(resourceUrl, Optional.empty(), Optional.empty());
+    return content(resourceUrl, null, null);
   }
 
   /**
@@ -54,20 +54,22 @@ public class HttpResource implements AutoCloseable {
    * @return resource or empty Optional instance if resource was not modified since last fetch or has no content
    * @throws RemoteResourceException if resource cannot be downloaded
    */
-  public Optional<Resource> content(URL resourceUrl, Optional<String> etag, Optional<ZonedDateTime> ifModifiedSince) throws RemoteResourceException {
+  public Optional<Resource> content(URL resourceUrl, String etag, ZonedDateTime ifModifiedSince) throws RemoteResourceException {
     l.debug("content::");
     Objects.nonNull(resourceUrl);
     Objects.nonNull(etag);
     Objects.nonNull(ifModifiedSince);
-    if (ifModifiedSince.isPresent() && ZonedDateTime.now().isBefore(ifModifiedSince.get())) {
+    if (ifModifiedSince != null && ZonedDateTime.now().isBefore(ifModifiedSince)) {
       throw new IllegalArgumentException("ifModifiedSince cannot be from future.");
     }
     try {
       Optional<Resource> resource;
       HttpGet httpGet = new HttpGet(resourceUrl.toURI());
-      etag.ifPresent(etagValue -> httpGet.addHeader(ETAG_IF_NONE_MATCH, etagValue));
-      if (ifModifiedSince.isPresent()) {
-        httpGet.addHeader(ETAG_IF_MODIFIED_SINCE, DATE_TIME_FORMATTER.format(ifModifiedSince.get()));
+      if (etag != null){
+         httpGet.addHeader(ETAG_IF_NONE_MATCH, etag);
+      }
+      if ( ifModifiedSince != null) {
+        httpGet.addHeader(ETAG_IF_MODIFIED_SINCE, DATE_TIME_FORMATTER.format(ifModifiedSince));
       }
       l.debug("content:: downloading url '{}'", resourceUrl);
       var response = httpclient.execute(httpGet);

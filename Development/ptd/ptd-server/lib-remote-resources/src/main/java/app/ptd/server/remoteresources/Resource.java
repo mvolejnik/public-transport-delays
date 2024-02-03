@@ -5,10 +5,10 @@ import java.util.Optional;
 
 public interface Resource {
 
-  public Optional<InputStream> content();
+  Optional<InputStream> content();
   
-  public Optional<String> fingerprint();
+  Optional<String> fingerprint();
   
-  public Optional<byte[]> digest();
+  Optional<byte[]> digest();
 
 }

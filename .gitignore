@@ -1,5 +1,6 @@
 *.class
 *.log
+.*~
 
 # Package Files #
 *.jar
@@ -15,3 +16,4 @@ target/
 .classpath
 .checkstyle
 nbproject/
+nb-configuration.xml
