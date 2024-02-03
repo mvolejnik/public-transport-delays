@@ -35,7 +35,7 @@ public class QuartzInit implements AutoCloseable{
     private static final String CONTEXT_PARAM_OPERATOR = "operators";
     private static final Map<String, URL> OPERATORS = new HashMap<>();
     private static final String CONTEXT_PARAM_VALUES_SEPARATOR = ";";
-    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.RFC_1123_DATE_TIME;
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ISO_INSTANT;
     private static final Logger l = LogManager.getLogger(QuartzInit.class);
 
     public QuartzInit(

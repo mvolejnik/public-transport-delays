@@ -3,7 +3,8 @@
 	<Appenders>
 		<Appender name="null" class="org.apache.log4j.varia.NullAppender" />
 		<Console name="stdout" target="SYSTEM_OUT">
-			<PatternLayout pattern="%d %-5p [%t] %c{1.} - %m%n" />
+			<!--PatternLayout pattern="%d %-5p [%t] %c{1.} - %m%n" / -->
+      <JsonTemplateLayout eventTemplateUri="classpath:ecs.json"/>
 		</Console>
 	</Appenders>
 	<Loggers>
