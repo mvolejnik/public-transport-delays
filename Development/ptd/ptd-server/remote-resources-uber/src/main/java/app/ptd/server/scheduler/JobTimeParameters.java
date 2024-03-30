@@ -16,7 +16,7 @@ public class JobTimeParameters {
     
     private final Duration startDelay;
     private final Duration interval;
-    private final Duration maxShift;
+    private final Duration maxOffset;
 
     public JobTimeParameters(Duration startDelay, Duration interval, Duration maxShift) {
         Objects.nonNull(startDelay);
@@ -24,19 +24,19 @@ public class JobTimeParameters {
         Objects.nonNull(maxShift);
         this.startDelay = startDelay;
         this.interval = interval;
-        this.maxShift = maxShift;
+        this.maxOffset = maxShift;
     }
 
-    public Duration getStartDelay() {
+    public Duration startDelay() {
         return startDelay;
     }
 
-    public Duration getInterval() {
+    public Duration interval() {
         return interval;
     }
 
-    public Duration getMaxShift() {
-        return maxShift;
+    public Duration maxOffset() {
+        return maxOffset;
     }
     
 }
