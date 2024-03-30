@@ -78,23 +78,23 @@ public class QuartzInit implements AutoCloseable{
             jobId = url.getHost() + "~" + new Random().nextInt();
         }
         try {
-            l.info("initQuartz:: Initing Quartz Scheduler with Delay [{}], interval [{}], random interval [{}], jobId [{}], jobUrl [{}]", jobTimeParameters.getStartDelay(),
-                    jobTimeParameters.getInterval(), jobTimeParameters.getMaxShift(), jobId, url.toExternalForm());
+            l.info("initQuartz:: Initing Quartz Scheduler with Delay [{}], interval [{}], random offset [{}], jobId [{}], jobUrl [{}]", jobTimeParameters.startDelay(),
+                    jobTimeParameters.interval(), jobTimeParameters.maxOffset(), jobId, url.toExternalForm());
             Random rnd = new Random();
-            ZonedDateTime startBaseline = ZonedDateTime.now().plusSeconds(jobTimeParameters.getStartDelay().toSeconds());
+            ZonedDateTime startBaseline = ZonedDateTime.now().plusSeconds(jobTimeParameters.startDelay().toSeconds());
             Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
             scheduler.start();
 
-            ZonedDateTime startAt = startBaseline.plusSeconds(rnd.nextInt((int) jobTimeParameters.getMaxShift().toSeconds()));
+            ZonedDateTime startAt = startBaseline.plusSeconds(rnd.nextInt((int) jobTimeParameters.maxOffset().toSeconds()));
             l.info("initQuartz:: scheduling job [{}] to start since [{}] every [{}]", jobId,
-                    DATE_TIME_FORMATTER.format(startAt), jobTimeParameters.getInterval());
+                    DATE_TIME_FORMATTER.format(startAt), jobTimeParameters.interval());
             JobDetail job = newJob(GetUrlResourceJob.class)
                     .withIdentity(jobId + "~job", "download")
                     .usingJobData(GetUrlResourceJob.DATA_URL, url.toExternalForm())
                     .build();
             Trigger trigger = newTrigger().withIdentity(jobId + "~trigger", "download")
                     .startAt(Date.from(startAt.toInstant()))
-                    .withSchedule(simpleSchedule().withIntervalInSeconds((int) jobTimeParameters.getInterval().toSeconds()).repeatForever())
+                    .withSchedule(simpleSchedule().withIntervalInSeconds((int) jobTimeParameters.interval().toSeconds()).repeatForever())
                     .build();
 
             scheduler.scheduleJob(job, trigger);
