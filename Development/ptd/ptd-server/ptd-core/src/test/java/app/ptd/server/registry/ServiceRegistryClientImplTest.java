@@ -46,7 +46,7 @@ public class ServiceRegistryClientImplTest {
         ServiceRegistryClientImpl instance = new ServiceRegistryClientImpl(new InetSocketAddress(MULTICAST_ADDRESS, MULTICAST_PORT), URN, MSG_URL);
         try (final MulticastSocket socket = new MulticastSocket(MULTICAST_PORT);) {
             Optional<NetworkInterface> networkInterface = networkInterface();
-            assertTrue(networkInterface.isPresent(), "Network interface should be available");
+            assertTrue(networkInterface.isPresent(), "Network interface should be available (try 'sudo ifconfig lo multicast')");
             socket.joinGroup(new InetSocketAddress(MULTICAST_ADDRESS, MULTICAST_PORT), networkInterface.get());
             Future<String> f = Executors.newSingleThreadExecutor().submit(() -> {
                 return receiveMulticastMessage(socket);
@@ -71,7 +71,7 @@ public class ServiceRegistryClientImplTest {
         ServiceRegistryClientImpl instance = new ServiceRegistryClientImpl(new InetSocketAddress(MULTICAST_ADDRESS, MULTICAST_PORT), URN, MSG_URL);
         try (final MulticastSocket socket = new MulticastSocket(MULTICAST_PORT);) {
             Optional<NetworkInterface> networkInterface = networkInterface();
-            assertTrue(networkInterface.isPresent(), "Network interface should be available");
+            assertTrue(networkInterface.isPresent(), "Network interface should be available (try 'sudo ifconfig lo multicast')");
             socket.joinGroup(new InetSocketAddress(MULTICAST_ADDRESS, MULTICAST_PORT), networkInterface.get());
             Future<String> f = Executors.newSingleThreadExecutor().submit(() -> {
                 return receiveMulticastMessage(socket);

@@ -71,7 +71,7 @@ public class DppFactory {
     UUID uuid = null;
     List<Object> attrs = rss.getTitleOrDescriptionOrLink();
     for (Object attr : attrs) {
-      if (attr instanceof JAXBElement<?>) {// TODO generics
+      if (attr instanceof JAXBElement<?>) {
         JAXBElement e = (JAXBElement) attr;
         Class clazz = ((JAXBElement) attr).getDeclaredType();
         l.trace("parseStatusUpdate:: Attribute of type [{}].", clazz);
