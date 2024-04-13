@@ -30,7 +30,6 @@ import org.apache.logging.log4j.Logger;
 @WebListener
 public class RegistryInit implements ServletContextListener {
 
-    //private ServiceRegistryClient registryClient;
     private static final String CONTEXT_PARAM_INTERVAL = "schedulerjobinterval";
     private static final String REGISTRY_MULTICAST_IP = "registryMulticastIp";
     private static final String REGISTRY_MULTICAST_PORT = "registryMulticastPort";
@@ -45,18 +44,6 @@ public class RegistryInit implements ServletContextListener {
         try {
             ServletContext context = contextEvent.getServletContext();
             Duration interval = Duration.parse(context.getInitParameter(CONTEXT_PARAM_INTERVAL));
-            /*
-            String serviceUrl = Arrays.stream(((WebAppContext.Context) context).getContextHandler().getServer().getConnectors())
-                    .filter(c -> c.getProtocols().contains("SSL"))
-                    .filter(c -> c instanceof ServerConnector)
-                    .map(c -> ((ServerConnector) c))
-                    .map(c -> String.join(c.getHost(), ":", String.valueOf(c.getPort())))
-                    .findFirst().get();
-            registryClient = new ServiceRegistryClientImpl(
-                    new InetSocketAddress(context.getInitParameter(REGISTRY_MULTICAST_IP).trim(), Integer.parseInt(context.getInitParameter(REGISTRY_MULTICAST_PORT).trim())),// 233.146.53.48 
-                    new URI(context.getInitParameter(REGISTRY_STATUS_UPDATE_SERVICE_URI).trim()),
-                    new URL(serviceUrl + context.getContextPath() + "/transport"));
-             */
             ServiceRegistryClient registryClient = new ServiceRegistryClientImpl(
                     new InetSocketAddress(context.getInitParameter(REGISTRY_MULTICAST_IP).trim(), Integer.parseInt(context.getInitParameter(REGISTRY_MULTICAST_PORT).trim())),// 233.146.53.48 
                     new URI(context.getInitParameter(REGISTRY_STATUS_UPDATE_SERVICE_URI).trim()),
