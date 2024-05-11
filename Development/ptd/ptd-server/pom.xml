@@ -11,7 +11,7 @@
   <artifactId>ptd-server</artifactId>
   <packaging>pom</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>Public Transport Delays - Server Application</name>
+  <name>Public Transport Delays - App - Server Application</name>
   <url>https://github.com/mvolejnik/public-transport-delays</url>
   <modules>
     <module>ptd-core</module>

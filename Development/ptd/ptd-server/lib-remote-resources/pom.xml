@@ -10,7 +10,7 @@
 	</parent>
 	<artifactId>lib-remote-resources</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Public Transport Delays - Remote Resources Library</name>
+	<name>Public Transport Delays - Lib - Remote Resources Library</name>
 	<url>http://maven.apache.org</url>
         
         <properties>
@@ -47,19 +47,17 @@
 			<artifactId>junit-jupiter-engine</artifactId>
 		</dependency>
     <dependency>
-        <groupId>org.wiremock</groupId>
-        <artifactId>wiremock</artifactId>
+      <groupId>org.wiremock</groupId>
+      <artifactId>wiremock-jetty12</artifactId>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-server</artifactId>
-      <version>11.0.18</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-util</artifactId>
-      <version>11.0.18</version>
       <scope>test</scope>
     </dependency>
 	</dependencies>
