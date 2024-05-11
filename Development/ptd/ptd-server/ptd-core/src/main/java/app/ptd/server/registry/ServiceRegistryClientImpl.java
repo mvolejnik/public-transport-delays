@@ -67,7 +67,7 @@ public class ServiceRegistryClientImpl implements ServiceRegistryClient {
             if (networkInterface.supportsMulticast()){
               return true;
             } else {
-              l.warn("Multicast not allowed for loopback interface, allow it using 'sudo ifconfig {} multicast'", networkInterface.getName());
+              l.warn("Multicast not allowed for loopback interface, allow it using 'ip l set {} multicast on (or sudo ifconfig {} multicast)'", networkInterface.getName(), networkInterface.getName());
             }
           }
           return false;

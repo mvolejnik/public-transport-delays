@@ -1,0 +1,15 @@
+Configuration:
+  name: default
+  Appenders:
+    Null:
+      name: null
+    Console:
+      name: stdout
+      target: SYSTEM_OUT
+      PatternLayout:
+        pattern: "%d %-5p [%t] %c{1.} - %m%n"
+  Loggers:
+    Root:
+      level: trace
+      AppenderRef:
+        ref: null

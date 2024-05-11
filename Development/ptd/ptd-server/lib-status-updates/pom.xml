@@ -12,7 +12,7 @@
     </parent>
     <artifactId>lib-status-updates</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Public Transport Delays - Status Update Library</name>
+    <name>Public Transport Delays - Lib - Status Update</name>
     <url>https://github.com/mvolejnik/public-transport-delays</url>
         
     <properties>
@@ -44,6 +44,21 @@
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
+        </dependency>
+        <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-core</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>com.fasterxml.jackson.dataformat</groupId>
+          <artifactId>jackson-dataformat-yaml</artifactId>
+          <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
