@@ -42,12 +42,14 @@ public class GetUrlResourceJob implements Job {
       });
     } catch (MalformedURLException | RemoteResourceException e) {
       l.error("Incorrect URL to download resource '{}'", urlParam);
+      l.info("execute:: job [{}] finished ✗", context.getJobDetail().getKey());
       throw new JobExecutionException(String.format("Unable to download resource '%s'", urlParam), e);
     } catch (Exception e){
+      l.info("execute:: job [{}] finished ✗", context.getJobDetail().getKey());
       l.error("Exception has occured", e);
       throw e;
     }
-    l.info("execute:: job finished");
+    l.info("execute:: job [{}] finished ✓", context.getJobDetail().getKey());
   }
   
   private void notifyServices(InputStream content){

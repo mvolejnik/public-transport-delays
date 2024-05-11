@@ -1,6 +1,7 @@
 package app.ptd.server.scheduler;
 
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 
 import org.apache.logging.log4j.LogManager;
@@ -27,7 +28,7 @@ import java.util.stream.Collectors;
 
 import static org.quartz.SimpleScheduleBuilder.simpleSchedule;
 
-public class QuartzInit implements AutoCloseable{
+public class QuartzInit implements AutoCloseable {
 
     private static final String CONTEXT_PARAM_DELAY = "schedulerdelay";
     private static final String CONTEXT_PARAM_INTERVAL = "schedulerjobinterval";
@@ -35,7 +36,7 @@ public class QuartzInit implements AutoCloseable{
     private static final String CONTEXT_PARAM_OPERATOR = "operators";
     private static final Map<String, URL> OPERATORS = new HashMap<>();
     private static final String CONTEXT_PARAM_VALUES_SEPARATOR = ";";
-    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.RFC_1123_DATE_TIME;
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ISO_INSTANT;
     private static final Logger l = LogManager.getLogger(QuartzInit.class);
 
     public QuartzInit(
@@ -59,7 +60,7 @@ public class QuartzInit implements AutoCloseable{
                 .filter(e -> e[1] != null)
                 .collect(Collectors.toMap(c -> c[0], c -> {
                     try {
-                        return new URL(c[1]);
+                        return URI.create(c[1]).toURL();
                     } catch (MalformedURLException e) {
                         l.error("Unable to parse URL.", e);
                         return null;
