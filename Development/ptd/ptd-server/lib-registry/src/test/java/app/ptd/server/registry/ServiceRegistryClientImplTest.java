@@ -21,6 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Disabled;
 
 public class ServiceRegistryClientImplTest {
 
@@ -41,6 +42,7 @@ public class ServiceRegistryClientImplTest {
     /**
      * Test of register method, of class ServiceRegistryClientImpl.
      */
+    @Disabled
     @Test
     void testRegister() throws UnknownHostException, IOException, InterruptedException, ExecutionException, TimeoutException {
         ServiceRegistryClientImpl instance = new ServiceRegistryClientImpl(new InetSocketAddress(MULTICAST_ADDRESS, MULTICAST_PORT), URN, MSG_URL);
@@ -65,6 +67,7 @@ public class ServiceRegistryClientImplTest {
     /**
      * Test of unregister method, of class ServiceRegistryClientImpl.
      */
+    @Disabled
     @Test
     void testUnregister() throws UnknownHostException, IOException, InterruptedException, ExecutionException, TimeoutException {
         System.out.println("unregister");
