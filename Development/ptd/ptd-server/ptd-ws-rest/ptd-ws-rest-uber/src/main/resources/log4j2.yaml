@@ -1,0 +1,17 @@
+Configuration:
+  Appenders:
+    Console:
+      name: stdout
+      target: SYSTEM_OUT
+      PatternLayout:
+        pattern: "%d %-5p [%t] %c{1.} - %m%n"
+  Loggers:
+    Logger:
+      - name: app.ptd
+        level: info
+        AppenderRef:
+          ref: stdout
+    Root:
+      level: info
+      AppenderRef:
+        ref: stdout

@@ -5,14 +5,16 @@
  */
 package app.ptd.server.registry;
 
+import java.net.URI;
+import java.net.URL;
+import java.util.Optional;
+
 /**
  *
  * @author mvolejnik
  */
 public interface ServiceRegistry {
 
-    public void register();
-
-    public void unregister();
+    public Optional<URL> get(URI serviceUri);
 
 }

@@ -28,7 +28,7 @@ public class App {
         options.addOption("i", JOB_INTERVAL, true, "scheduler job interval");
         options.addOption("d", JOB_INTERVAL_DELAY, true, "scheduler job interval delay");
         options.addOption("r", JOB_INTERVAL_RANDOM, true, "scheduler job interval random");
-        options.addOption("ma", REGISTRY_MULTICAST_IP, true, "registry service registry ip address");
+        options.addOption("ma", REGISTRY_MULTICAST_IP, true, "registry service ip address");
         options.addOption("mp", REGISTRY_MULGTICAST_PORT, true, "registry serivce multicast port");
         options.addOption("s", SERVICE_STATUS_UPDATE, true, "status update service URN");
         options.addOption("o", OPERATORS, true, "operators map as operatorid=url");
