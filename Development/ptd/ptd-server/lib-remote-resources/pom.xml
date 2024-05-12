@@ -10,7 +10,7 @@
 	</parent>
 	<artifactId>lib-remote-resources</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Public Transport Delays - Lib - Remote Resources Library</name>
+	<name>PT Delays - Lib - Remote Resources Library</name>
 	<url>http://maven.apache.org</url>
         
         <properties>

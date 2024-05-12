@@ -8,7 +8,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>app.ptd.server</groupId>
   <artifactId>ptd-ws-rest-uber</artifactId>
-  <name>Public Transport Delays - REST WS Uber</name>
+  <name>PT Delays - REST WS Uber</name>
   <version>0.0.1-SNAPSHOT</version>
   <url>https://github.com/mvolejnik/public-transport-delays</url>
   <build>

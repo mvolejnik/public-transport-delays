@@ -11,7 +11,7 @@
     <groupId>app.ptd.server</groupId>
     <artifactId>ptd-ws-rest-web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Public Transport Delays - REST API web</name>
+    <name>PT Delays - REST API web</name>
     <url>https://github.com/mvolejnik/public-transport-delays</url>
     
     <packaging>war</packaging>
