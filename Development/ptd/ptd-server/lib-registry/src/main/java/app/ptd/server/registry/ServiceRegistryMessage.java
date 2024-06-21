@@ -8,8 +8,8 @@ package app.ptd.server.registry;
 import java.io.ByteArrayOutputStream;
 import java.net.URI;
 import java.net.URL;
-import java.nio.charset.Charset;
 import jakarta.json.Json;
+import java.nio.charset.StandardCharsets;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -23,7 +23,6 @@ public class ServiceRegistryMessage {
     private final URL url;
     private static final String JSON_PROPERTY_SERVICE = "srv";
     private static final String JSON_PROPERTY_URL = "url";
-    private String UTF_8 = "UTF-8";
     private static final Logger l = LogManager.getLogger(ServiceRegistryMessage.class);
 
     public ServiceRegistryMessage(URI uri, URL url) {
@@ -42,7 +41,7 @@ public class ServiceRegistryMessage {
                 .writeEnd()
                 .writeEnd()
                 .close();
-        return os.toString(Charset.forName(UTF_8));
+        return os.toString(StandardCharsets.UTF_8);
     }
     
     /*
