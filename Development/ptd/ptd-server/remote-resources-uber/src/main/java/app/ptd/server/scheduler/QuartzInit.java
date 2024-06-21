@@ -86,7 +86,7 @@ public class QuartzInit implements AutoCloseable {
             Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
             scheduler.start();
 
-            ZonedDateTime startAt = startBaseline.plusSeconds(rnd.nextInt((int) jobTimeParameters.maxOffset().toSeconds()));
+            ZonedDateTime startAt = startBaseline.minusSeconds(rnd.nextInt((int) jobTimeParameters.maxOffset().toSeconds()));
             l.info("initQuartz:: scheduling job [{}] to start since [{}] every [{}]", jobId,
                     DATE_TIME_FORMATTER.format(startAt), jobTimeParameters.interval());
             JobDetail job = newJob(GetUrlResourceJob.class)

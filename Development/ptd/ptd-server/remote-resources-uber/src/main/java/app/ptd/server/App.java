@@ -39,7 +39,7 @@ public class App {
     {
         CommandLine line = new DefaultParser().parse( options(), args );
         try (QuartzInit scheduler = new QuartzInit(
-            Duration.parse(line.getOptionValue(JOB_INTERVAL, "PT1M")),
+            Duration.parse(line.getOptionValue(JOB_INTERVAL, "PT10S")),
             Duration.parse(line.getOptionValue(JOB_INTERVAL_DELAY, "PT1M")),
             Duration.parse(line.getOptionValue(JOB_INTERVAL_RANDOM, "PT1M")),
             line.getOptionValue(OPERATORS, OPERATORS_DEFAULT))) {

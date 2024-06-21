@@ -8,6 +8,7 @@ Configuration:
   Loggers:
     Logger:
       - name: app.ptd
+        additivity: false
         level: info
         AppenderRef:
           ref: stdout
