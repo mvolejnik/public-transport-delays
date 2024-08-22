@@ -1,4 +1,4 @@
-package app.ptd.server.ws.rs;
+package app.ptd.server.api.rs;
 
 import static app.ptd.server.management.Metrics.MetricsNames.*;
 
@@ -23,7 +23,7 @@ import com.codahale.metrics.Timer;
 import app.ptd.server.management.Metrics;
 import app.ptd.server.model.Cities;
 import app.ptd.server.model.Lines;
-import app.ptd.server.ws.json.JsonIdentifiables;
+import app.ptd.server.api.rs.json.JsonIdentifiables;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.PUT;
 

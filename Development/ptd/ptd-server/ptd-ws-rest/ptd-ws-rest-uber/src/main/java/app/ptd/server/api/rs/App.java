@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package app.ptd.server.ws.rs;
+package app.ptd.server.api.rs;
 
 import app.ptd.server.management.RegistryInit;
 import org.apache.commons.cli.CommandLine;
@@ -44,7 +44,7 @@ public class App {
         context.setWelcomeFiles(new String[]{"index.jsp"});
         ServletHolder servletHolder = handler.addServletWithMapping(ServletContainer.class, "/api/*");
         servletHolder.setInitOrder(1);
-        servletHolder.setInitParameter("jersey.config.server.provider.packages", "app.ptd.server.ws.rs");
+        servletHolder.setInitParameter("jersey.config.server.provider.packages", "app.ptd.server.api.rs");
         servletHolder.setInitParameter("jersey.config.server.tracing.type","ALL");
         servletHolder.setInitParameter("jersey.config.server.tracing.threshold","TRACE");
         servletHolder.setInitParameter("jersey.config.server.logging.logger.level","DEBUG");

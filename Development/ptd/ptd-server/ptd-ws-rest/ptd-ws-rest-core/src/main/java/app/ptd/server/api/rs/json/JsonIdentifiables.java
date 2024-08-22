@@ -1,4 +1,4 @@
-package app.ptd.server.ws.json;
+package app.ptd.server.api.rs.json;
 
 import java.io.OutputStream;
 

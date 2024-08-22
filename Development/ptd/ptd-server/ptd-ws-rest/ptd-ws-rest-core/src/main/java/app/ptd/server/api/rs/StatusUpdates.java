@@ -1,4 +1,4 @@
-package app.ptd.server.ws.rs;
+package app.ptd.server.api.rs;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
